@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LAB 5</title>
+    <script type="text/javascript">
+        var user = {
+            fName: "",
+            lName: "",
+            emailAddress: "",
+            password: "",
+            DOB: ""
+        };
+
+        user.fName = prompt("Enter first name...");
+        user.lName = prompt("Enter last name...");
+        user.emailAddress = prompt("Enter E-mail address");
+        user.DOB = prompt("Enter date of birth (e.g. 1/1/2000)");
+        user.password = prompt("Enter password (include ! or ?)");
+
+        if (!user.password.includes('!') && !user.password.includes('?')) {
+            user.password = null;
+        }
+
+        function passwordMask(password) {
+            if (password === null) {
+                return null;
+            }
+            let maskedPassword = "";
+            for (let i = 0; i < password.length; i++) {
+                maskedPassword += "*";
+            }
+            return maskedPassword;
+        }
+
+        let maskedPassword = passwordMask(user.password);
+
+        document.write(user.fName + "<br>");
+        document.write(user.lName + "<br>");
+        document.write(user.emailAddress + "<br>");
+        document.write(user.DOB + "<br>");
+        if (user.password === null) {
+            document.write("Invalid password. Refresh page and try again.");
+        } else {
+            document.write(maskedPassword + "<br>");
+        }        
+</script>
+</head>
+<body>
+</body>
+</html>
